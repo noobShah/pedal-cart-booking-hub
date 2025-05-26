@@ -1,11 +1,16 @@
 
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ServiceModal from "@/components/ServiceModal";
 
 const Services = () => {
+  const [selectedService, setSelectedService] = useState<any>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const packages = [
     {
       id: "basic",
@@ -68,6 +73,11 @@ const Services = () => {
     { id: "tire-shine", name: "Premium Tire Shine", price: 12 }
   ];
 
+  const handleServiceClick = (service: any) => {
+    setSelectedService(service);
+    setIsModalOpen(true);
+  };
+
   return (
     <div className="min-h-screen">
       <Navbar />
@@ -89,7 +99,7 @@ const Services = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {packages.map((pkg) => (
-              <Card key={pkg.id} className={`relative ${pkg.popular ? 'ring-2 ring-blue-500 shadow-lg' : ''}`}>
+              <Card key={pkg.id} className={`relative cursor-pointer transition-all duration-300 hover:shadow-xl hover:scale-105 ${pkg.popular ? 'ring-2 ring-blue-500 shadow-lg' : ''}`}>
                 {pkg.popular && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                     <span className="bg-blue-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
@@ -107,19 +117,33 @@ const Services = () => {
                 
                 <CardContent>
                   <ul className="space-y-3 mb-6">
-                    {pkg.features.map((feature, index) => (
+                    {pkg.features.slice(0, 4).map((feature, index) => (
                       <li key={index} className="flex items-start">
                         <span className="text-green-500 mr-2 mt-1">✓</span>
                         <span className="text-gray-700">{feature}</span>
                       </li>
                     ))}
+                    {pkg.features.length > 4 && (
+                      <li className="text-blue-600 font-medium">
+                        +{pkg.features.length - 4} more features...
+                      </li>
+                    )}
                   </ul>
                   
-                  <Link to="/booking" className="block">
-                    <Button className={`w-full ${pkg.popular ? 'bg-blue-600 hover:bg-blue-700' : ''}`}>
-                      Select Package
+                  <div className="space-y-2">
+                    <Button 
+                      variant="outline"
+                      className="w-full"
+                      onClick={() => handleServiceClick(pkg)}
+                    >
+                      View Details
                     </Button>
-                  </Link>
+                    <Link to="/booking" className="block">
+                      <Button className={`w-full ${pkg.popular ? 'bg-blue-600 hover:bg-blue-700' : ''}`}>
+                        Select Package
+                      </Button>
+                    </Link>
+                  </div>
                 </CardContent>
               </Card>
             ))}
@@ -202,6 +226,15 @@ const Services = () => {
       </section>
 
       <Footer />
+
+      {/* Service Modal */}
+      {selectedService && (
+        <ServiceModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          service={selectedService}
+        />
+      )}
     </div>
   );
 };
