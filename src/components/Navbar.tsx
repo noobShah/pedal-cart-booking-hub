@@ -15,7 +15,9 @@ const Navbar = () => {
   const navItems = [
     { name: "Home", path: "/" },
     { name: "Services", path: "/services" },
+    { name: "Gallery", path: "/gallery" },
     { name: "About", path: "/about" },
+    { name: "Contact", path: "/contact" },
     { name: "Booking", path: "/booking" },
   ];
 
@@ -25,17 +27,17 @@ const Navbar = () => {
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0">
-              <h1 className="text-2xl font-bold text-blue-600">BikeDetails Pro</h1>
+              <h1 className="text-2xl font-bold text-blue-600 hover-scale transition-transform duration-200">BikeDetails Pro</h1>
             </Link>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 to={item.path}
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 hover-scale ${
                   location.pathname === item.path
                     ? "text-blue-600 bg-blue-50"
                     : "text-gray-700 hover:text-blue-600 hover:bg-gray-50"
@@ -45,28 +47,28 @@ const Navbar = () => {
               </Link>
             ))}
             <Link to="/cart" className="relative">
-              <Button variant="outline" size="sm">
+              <Button variant="outline" size="sm" className="hover-scale transition-all duration-200">
                 <ShoppingCart className="h-4 w-4 mr-2" />
                 Cart
                 {cartCount > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
+                  <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center animate-pulse">
                     {cartCount}
                   </span>
                 )}
               </Button>
             </Link>
             <Link to="/bookings">
-              <Button size="sm">My Bookings</Button>
+              <Button size="sm" className="hover-scale transition-all duration-200">My Bookings</Button>
             </Link>
           </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center space-x-2">
             <Link to="/cart" className="relative">
-              <Button variant="outline" size="sm">
+              <Button variant="outline" size="sm" className="hover-scale">
                 <ShoppingCart className="h-4 w-4" />
                 {cartCount > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
+                  <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center animate-pulse">
                     {cartCount}
                   </span>
                 )}
@@ -74,7 +76,7 @@ const Navbar = () => {
             </Link>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-700 hover:text-blue-600"
+              className="text-gray-700 hover:text-blue-600 transition-colors"
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -84,13 +86,13 @@ const Navbar = () => {
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <div className="md:hidden">
+        <div className="md:hidden animate-fade-in">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 to={item.path}
-                className={`block px-3 py-2 rounded-md text-base font-medium ${
+                className={`block px-3 py-2 rounded-md text-base font-medium transition-all duration-200 ${
                   location.pathname === item.path
                     ? "text-blue-600 bg-blue-50"
                     : "text-gray-700 hover:text-blue-600 hover:bg-gray-50"
@@ -102,7 +104,7 @@ const Navbar = () => {
             ))}
             <Link
               to="/bookings"
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50"
+              className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-all duration-200"
               onClick={() => setIsOpen(false)}
             >
               My Bookings
