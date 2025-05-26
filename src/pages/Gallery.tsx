@@ -21,17 +21,17 @@ const Gallery = () => {
   const galleryItems = [
     {
       id: 1,
-      image: "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=600&h=400&fit=crop",
+      image: "/ninja.jpg",
       title: "Kawasaki Ninja - Racing Edition",
       category: "racing",
       description: "Full ceramic coating with custom polish",
       service: "Premium Detail",
       rating: 5,
-      beforeAfter: true
+      beforeAfter: false
     },
     {
       id: 2,
-      image: "https://images.unsplash.com/photo-1571068316344-75bc76f77890?w=600&h=400&fit=crop",
+      image: "/harley.jpg",
       title: "Harley Davidson - Classic Cruiser",
       category: "cruiser", 
       description: "Premium leather treatment and chrome polish",
@@ -41,17 +41,17 @@ const Gallery = () => {
     },
     {
       id: 3,
-      image: "https://images.unsplash.com/photo-1544191696-15693072b5c8?w=600&h=400&fit=crop",
+      image: "/r1.jpg",
       title: "Yamaha R1 - Track Ready",
       category: "racing",
       description: "Competition-grade detailing package",
       service: "Full Protection",
       rating: 5,
-      beforeAfter: true
+      beforeAfter: false
     },
     {
       id: 4,
-      image: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=600&h=400&fit=crop",
+      image: "/bmw.jpg",
       title: "BMW Mountain Explorer",
       category: "mountain",
       description: "Anti-corrosion treatment for off-road adventures",
@@ -67,11 +67,11 @@ const Gallery = () => {
       description: "Paint protection film with premium wax",
       service: "Full Protection",
       rating: 5,
-      beforeAfter: true
+      beforeAfter: false
     },
     {
       id: 6,
-      image: "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=600&h=400&fit=crop",
+      image: "/cbr.jpg",
       title: "Honda CBR - Sport Edition",
       category: "sport",
       description: "Complete detailing with headlight restoration",

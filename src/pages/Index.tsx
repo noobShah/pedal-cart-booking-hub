@@ -40,22 +40,22 @@ const Index = () => {
 
   const showcaseBikes = [
     {
-      image: "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=800&h=600&fit=crop",
+      image: "/ninja.jpg",
       title: "Sport Racing Bike",
       description: "Custom ceramic coating with premium detailing"
     },
     {
-      image: "https://images.unsplash.com/photo-1571068316344-75bc76f77890?w=800&h=600&fit=crop",
+      image: "/bmw.jpg",
       title: "Mountain Beast",
       description: "Full protection package with anti-corrosion treatment"
     },
     {
-      image: "https://images.unsplash.com/photo-1544191696-15693072b5c8?w=800&h=600&fit=crop",
+      image: "/harley.jpg",
       title: "Street Cruiser",
       description: "Premium detail with custom polish finish"
     },
     {
-      image: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&h=600&fit=crop",
+      image: "/cbr.jpg",
       title: "Racing Machine",
       description: "Professional competition-grade detailing"
     }
